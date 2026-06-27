@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- Fast smoke suite: the few highest-value happy-path checks. -->
+<!-- Run with: mvn clean test -Dsuite=smoke.xml -->
+<suite name="SauceDemo Smoke" verbose="1">
+
+    <listeners>
+        <listener class-name="com.saucedemo.listeners.TestListener"/>
+    </listeners>
+
+    <test name="Smoke">
+        <classes>
+            <class name="com.saucedemo.tests.LoginTest">
+                <methods>
+                    <include name="standardUserCanLogIn"/>
+                </methods>
+            </class>
+            <class name="com.saucedemo.tests.CartTest">
+                <methods>
+                    <include name="addSingleItem"/>
+                </methods>
+            </class>
+            <class name="com.saucedemo.tests.CheckoutTest">
+                <methods>
+                    <include name="successfulCheckout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
