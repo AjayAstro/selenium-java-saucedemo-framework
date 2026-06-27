@@ -17,7 +17,6 @@ public class HeaderComponent extends BasePage {
     private static final By CLOSE_MENU_BUTTON  = By.id("react-burger-cross-btn");
     private static final By LOGOUT_LINK        = By.id("logout_sidebar_link");
     private static final By RESET_LINK         = By.id("reset_sidebar_link");
-    private static final By INVENTORY_LINK     = By.id("inventory_sidebar_link");
     private static final By MENU_WRAP          = By.className("bm-menu-wrap");
     private static final By CART_LINK          = By.className("shopping_cart_link");
     private static final By CART_BADGE         = By.className("shopping_cart_badge");
