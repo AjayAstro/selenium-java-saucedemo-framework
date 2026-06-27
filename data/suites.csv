@@ -1,0 +1,41 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","328","Selected items persist when navigating back to the inventory","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CartTest","UI Tests","com.saucedemo.tests.CartTest","cartPersistsAcrossNavigation"
+"","240","Missing password shows the required-field error","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.LoginTest","UI Tests","com.saucedemo.tests.LoginTest","missingPasswordShowsError"
+"","111","The burger menu opens and closes","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.NavigationTest","UI Tests","com.saucedemo.tests.NavigationTest","menuOpensAndCloses"
+"","454","Order completion message is displayed","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CheckoutTest","UI Tests","com.saucedemo.tests.CheckoutTest","orderCompletionMessageIsShown"
+"","148","Sort products by price low to high","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.InventoryTest","UI Tests","com.saucedemo.tests.InventoryTest","sortByPriceLowToHigh"
+"  As a SauceDemo user
+  I want the login form to behave correctly
+  So that only valid users can access the store","950","Standard user logs in successfully","","2026-06-27","passed","2026-06-27","","SauceDemo login","Standard user logs in successfully",""
+"  As a SauceDemo user
+  I want the login form to behave correctly
+  So that only valid users can access the store","848","Invalid credentials are rejected","","2026-06-27","passed","2026-06-27","","SauceDemo login","Invalid credentials are rejected",""
+"","171","Sort products by name Z to A","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.InventoryTest","UI Tests","com.saucedemo.tests.InventoryTest","sortByNameZtoA"
+"The badge should appear, increment, and disappear when the cart empties.","248","Cart badge updates as items are added and removed","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CartTest","UI Tests","com.saucedemo.tests.CartTest","cartBadgeUpdates"
+"locked_out_user must not be able to log in and should see the lock-out error.","357","Locked-out user is rejected with a clear message","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.LoginTest","UI Tests","com.saucedemo.tests.LoginTest","lockedOutUserIsRejected"
+"A valid standard_user should be authenticated and land on the inventory page.","815","Standard user can log in successfully","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.LoginTest","UI Tests","com.saucedemo.tests.LoginTest","standardUserCanLogIn"
+"","246","Reset app state clears the cart","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.NavigationTest","UI Tests","com.saucedemo.tests.NavigationTest","resetAppStateClearsCart"
+"  As a SauceDemo user
+  I want the login form to behave correctly
+  So that only valid users can access the store","874","Locked-out user is rejected","","2026-06-27","passed","2026-06-27","","SauceDemo login","Locked-out user is rejected",""
+"The displayed item total must match the sum of the line items, and the grand total must equal subtotal + tax.","489","Overview subtotal equals the sum of item prices","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CheckoutTest","UI Tests","com.saucedemo.tests.CheckoutTest","overviewTotalsAreConsistent"
+"","663","Invalid username/password is rejected","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.LoginTest","UI Tests","com.saucedemo.tests.LoginTest","invalidCredentialsAreRejected"
+"SauceDemo ships six demo products; all should be rendered.","43","All six products are visible","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.InventoryTest","UI Tests","com.saucedemo.tests.InventoryTest","productListIsVisible"
+"","254","Remove an item from the cart","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CartTest","UI Tests","com.saucedemo.tests.CartTest","removeItemFromCart"
+"","61","Inventory page loads after login","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.InventoryTest","UI Tests","com.saucedemo.tests.InventoryTest","inventoryPageLoads"
+"","150","Sort products by price high to low","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.InventoryTest","UI Tests","com.saucedemo.tests.InventoryTest","sortByPriceHighToLow"
+"","543","Checkout cannot continue while required fields are empty","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.NegativeAccessTest","UI Tests","com.saucedemo.tests.NegativeAccessTest","checkoutBlocksWhenFieldsMissing"
+"From a populated cart, a customer can complete checkout end to end.","464","Complete the full checkout flow successfully","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CheckoutTest","UI Tests","com.saucedemo.tests.CheckoutTest","successfulCheckout"
+"  As a SauceDemo user
+  I want the login form to behave correctly
+  So that only valid users can access the store","871","Invalid credentials are rejected","","2026-06-27","passed","2026-06-27","","SauceDemo login","Invalid credentials are rejected",""
+"","332","Missing postal code is rejected","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CheckoutTest","UI Tests","com.saucedemo.tests.CheckoutTest","missingPostalCodeValidation"
+"","402","Missing first name is rejected","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CheckoutTest","UI Tests","com.saucedemo.tests.CheckoutTest","missingFirstNameValidation"
+"Hitting /inventory.html directly without a session must not expose the page.","194","Protected pages redirect unauthenticated users to login","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.NegativeAccessTest","UI Tests","com.saucedemo.tests.NegativeAccessTest","protectedPageRedirectsWhenNotLoggedIn"
+"","177","Add a single item to the cart","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CartTest","UI Tests","com.saucedemo.tests.CartTest","addSingleItem"
+"","305","Missing last name is rejected","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CheckoutTest","UI Tests","com.saucedemo.tests.CheckoutTest","missingLastNameValidation"
+"","123","Logout returns the user to the login page","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.NavigationTest","UI Tests","com.saucedemo.tests.NavigationTest","logoutWorks"
+"","233","Missing username shows the required-field error","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.LoginTest","UI Tests","com.saucedemo.tests.LoginTest","missingUsernameShowsError"
+"","301","Locked-out user cannot reach the inventory","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.NegativeAccessTest","UI Tests","com.saucedemo.tests.NegativeAccessTest","lockedOutUserCannotAccessInventory"
+"","285","Sort products by name A to Z","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.InventoryTest","UI Tests","com.saucedemo.tests.InventoryTest","sortByNameAtoZ"
+"","322","Add multiple items to the cart","SauceDemo Regression","2026-06-27","passed","2026-06-27","com.saucedemo.tests.CartTest","UI Tests","com.saucedemo.tests.CartTest","addMultipleItems"
