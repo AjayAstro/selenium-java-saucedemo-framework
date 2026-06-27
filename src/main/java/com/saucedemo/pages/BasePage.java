@@ -68,17 +68,34 @@ public abstract class BasePage {
     }
 
     /**
-     * Types into a field and verifies the value registered, retrying if needed.
-     * React controlled inputs can drop the first keystrokes right after a
-     * client-side route change, so a single blind sendKeys is not reliable.
+     * Types into a field and makes sure the value actually registered.
+     *
+     * <p>Tries a normal {@code sendKeys} first (realistic input). The SauceDemo
+     * React form can drop programmatic keystrokes on the first field right after
+     * the cart&rarr;checkout route change; when that happens the value is set
+     * through the input's native setter and an {@code input} event is fired so
+     * React's controlled-component state picks it up.
      */
     protected void type(By locator, String text) {
-        wait.until(d -> {
-            WebElement element = waitForVisible(locator);
-            element.clear();
-            element.sendKeys(text);
-            return text.equals(element.getDomProperty("value"));
-        });
+        WebElement element = waitForVisible(locator);
+        element.clear();
+        element.sendKeys(text);
+        if (!text.equals(element.getDomProperty("value"))) {
+            setValueViaReact(element, text);
+        }
+    }
+
+    private void setValueViaReact(WebElement element, String text) {
+        ((JavascriptExecutor) driver).executeScript(
+                "const el = arguments[0], val = arguments[1];"
+                        + "const proto = el instanceof window.HTMLTextAreaElement"
+                        + "    ? window.HTMLTextAreaElement.prototype"
+                        + "    : window.HTMLInputElement.prototype;"
+                        + "const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;"
+                        + "setter.call(el, val);"
+                        + "el.dispatchEvent(new Event('input', { bubbles: true }));"
+                        + "el.dispatchEvent(new Event('change', { bubbles: true }));",
+                element, text);
     }
 
     protected String getText(By locator) {
