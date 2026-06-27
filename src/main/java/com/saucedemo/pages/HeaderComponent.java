@@ -29,13 +29,16 @@ public class HeaderComponent extends BasePage {
     @Step("Open the navigation menu")
     public HeaderComponent openMenu() {
         click(BURGER_MENU_BUTTON);
-        waitForClickable(LOGOUT_LINK);
+        // Menu is open once the wrapper is no longer aria-hidden.
+        wait.until(ExpectedConditions.attributeToBe(MENU_WRAP, "aria-hidden", "false"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(LOGOUT_LINK));
         return this;
     }
 
     @Step("Close the navigation menu")
     public HeaderComponent closeMenu() {
-        click(CLOSE_MENU_BUTTON);
+        // JS-click avoids missing the cross button while the menu is animating.
+        jsClick(CLOSE_MENU_BUTTON);
         // The menu wrapper is hidden (aria-hidden=true) once the slide-out finishes.
         wait.until(ExpectedConditions.attributeToBe(MENU_WRAP, "aria-hidden", "true"));
         return this;
@@ -50,21 +53,28 @@ public class HeaderComponent extends BasePage {
     @Step("Log out")
     public LoginPage logout() {
         openMenu();
-        click(LOGOUT_LINK);
+        // JS-click the link to avoid the moving-target problem during the slide.
+        jsClick(LOGOUT_LINK);
+        // Logout is complete once the login form is back.
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("login-button")));
         return new LoginPage(driver);
     }
 
     @Step("Reset application state")
     public HeaderComponent resetAppState() {
         openMenu();
-        click(RESET_LINK);
+        jsClick(RESET_LINK);
         closeMenu();
         return this;
     }
 
     @Step("Open the cart")
     public CartPage openCart() {
-        click(CART_LINK);
+        // JS-click the anchor itself: once a badge is shown it overlaps the link
+        // centre, and a native click can land on the badge span instead of the
+        // anchor, so navigation never fires.
+        jsClick(CART_LINK);
+        wait.until(ExpectedConditions.urlContains("cart.html"));
         return new CartPage(driver);
     }
 

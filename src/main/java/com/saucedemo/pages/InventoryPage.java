@@ -79,13 +79,17 @@ public class InventoryPage extends BasePage {
 
     @Step("Add product to cart: {productName}")
     public InventoryPage addProductToCart(String productName) {
-        actionButtonFor(productName).click();
+        clickActionButton(productName);
+        // Confirm the action registered: the button toggles to "Remove".
+        waitForButtonState(productName, "remove");
         return this;
     }
 
     @Step("Remove product from cart: {productName}")
     public InventoryPage removeProductFromCart(String productName) {
-        actionButtonFor(productName).click();
+        clickActionButton(productName);
+        // Confirm the action registered: the button toggles back to "Add to cart".
+        waitForButtonState(productName, "add-to-cart");
         return this;
     }
 
@@ -94,16 +98,35 @@ public class InventoryPage extends BasePage {
     }
 
     /**
-     * Returns the Add/Remove button that belongs to the card for {@code productName}.
-     * Locating relative to the product card keeps the action robust regardless of
-     * the current sort order or the button's add/remove state.
+     * Clicks the Add/Remove button on the card for {@code productName}. Locating
+     * relative to the product card keeps the action robust regardless of the
+     * current sort order or the button's add/remove state.
      */
-    private WebElement actionButtonFor(String productName) {
-        By itemButton = By.xpath(
+    private void clickActionButton(String productName) {
+        click(actionButtonLocator(productName));
+    }
+
+    private By actionButtonLocator(String productName) {
+        return By.xpath(
                 "//div[contains(@class,'inventory_item')]"
                         + "[.//*[@data-test='inventory-item-name' and normalize-space()=\"" + productName + "\"]]"
                         + "//button");
-        return waitForClickable(itemButton);
+    }
+
+    /**
+     * Waits until the card's button reflects the expected state, identified by
+     * the {@code data-test} prefix ("add-to-cart" or "remove"). This is the
+     * reliable signal that the click was processed by the app.
+     */
+    private void waitForButtonState(String productName, String dataTestPrefix) {
+        wait.until(d -> {
+            var buttons = d.findElements(actionButtonLocator(productName));
+            if (buttons.isEmpty()) {
+                return false;
+            }
+            String dataTest = buttons.get(0).getDomAttribute("data-test");
+            return dataTest != null && dataTest.startsWith(dataTestPrefix);
+        });
     }
 
     /** Convenience helper used by sorting tests to verify ordering. */

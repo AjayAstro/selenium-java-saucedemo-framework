@@ -2,7 +2,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <!-- Full regression suite: all UI tests plus the Cucumber BDD layer. -->
-<suite name="SauceDemo Regression" verbose="1" parallel="classes" thread-count="3">
+<!-- Runs sequentially for stability in CI. The framework is parallel-safe -->
+<!-- (ThreadLocal driver); set parallel="classes" thread-count="N" to scale. -->
+<suite name="SauceDemo Regression" verbose="1">
 
     <listeners>
         <listener class-name="com.saucedemo.listeners.TestListener"/>

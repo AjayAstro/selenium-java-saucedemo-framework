@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -45,11 +46,11 @@ public class CartPage extends BasePage {
 
     @Step("Remove product from cart: {productName}")
     public CartPage removeItem(String productName) {
-        By removeButton = By.xpath(
-                "//div[contains(@class,'cart_item')]"
-                        + "[.//*[@data-test='inventory-item-name' and normalize-space()=\"" + productName + "\"]]"
-                        + "//button");
-        click(removeButton);
+        String rowXpath = "//div[contains(@class,'cart_item')]"
+                + "[.//*[@data-test='inventory-item-name' and normalize-space()=\"" + productName + "\"]]";
+        click(By.xpath(rowXpath + "//button"));
+        // Confirm removal: the item's row is gone from the cart.
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(rowXpath)));
         return this;
     }
 
