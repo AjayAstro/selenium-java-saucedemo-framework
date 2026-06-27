@@ -2,7 +2,6 @@ package com.saucedemo.pages;
 
 import com.saucedemo.config.ConfigManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,22 +43,16 @@ public abstract class BasePage {
     }
 
     /**
-     * Clicks an element after scrolling it into view, falling back to a
-     * JavaScript click if the native click is intercepted (e.g. by a sticky
-     * header or an in-flight animation). This keeps interactions reliable in
-     * headless/CI runs without resorting to sleeps.
+     * Waits until the element is clickable, scrolls it into view and clicks it
+     * via a scripted dispatch. A scripted click reliably reaches React's
+     * synthetic event handlers in headless/CI runs, where a native click can be
+     * silently swallowed by an overlapping node or an in-flight animation.
      */
     protected void click(By locator) {
-        WebElement element = waitForClickable(locator);
-        scrollIntoView(element);
-        try {
-            element.click();
-        } catch (ElementClickInterceptedException e) {
-            jsClick(element);
-        }
+        jsClick(waitForClickable(locator));
     }
 
-    /** Dispatches a click via JavaScript; robust against animated/offset elements. */
+    /** Dispatches a click via JavaScript on an element located by presence. */
     protected void jsClick(By locator) {
         jsClick(wait.until(ExpectedConditions.presenceOfElementLocated(locator)));
     }
