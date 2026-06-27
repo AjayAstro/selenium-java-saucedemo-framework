@@ -67,10 +67,18 @@ public abstract class BasePage {
                 .executeScript("arguments[0].scrollIntoView({block:'center'});", element);
     }
 
+    /**
+     * Types into a field and verifies the value registered, retrying if needed.
+     * React controlled inputs can drop the first keystrokes right after a
+     * client-side route change, so a single blind sendKeys is not reliable.
+     */
     protected void type(By locator, String text) {
-        WebElement element = waitForVisible(locator);
-        element.clear();
-        element.sendKeys(text);
+        wait.until(d -> {
+            WebElement element = waitForVisible(locator);
+            element.clear();
+            element.sendKeys(text);
+            return text.equals(element.getDomProperty("value"));
+        });
     }
 
     protected String getText(By locator) {
