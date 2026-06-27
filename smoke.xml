@@ -5,9 +5,8 @@
 <!-- Run with: mvn clean test -Dsuite=smoke.xml -->
 <suite name="SauceDemo Smoke" verbose="1">
 
-    <listeners>
-        <listener class-name="com.saucedemo.listeners.TestListener"/>
-    </listeners>
+    <!-- Listeners auto-registered via TestNG ServiceLoader (see
+         src/test/resources/META-INF/services/org.testng.ITestNGListener). -->
 
     <test name="Smoke">
         <classes>

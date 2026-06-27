@@ -6,9 +6,9 @@
 <!-- (ThreadLocal driver); set parallel="classes" thread-count="N" to scale. -->
 <suite name="SauceDemo Regression" verbose="1">
 
-    <listeners>
-        <listener class-name="com.saucedemo.listeners.TestListener"/>
-    </listeners>
+    <!-- Listeners are auto-registered via TestNG ServiceLoader so they apply to
+         every run, including single-test runs (see
+         src/test/resources/META-INF/services/org.testng.ITestNGListener). -->
 
     <test name="UI Tests">
         <classes>

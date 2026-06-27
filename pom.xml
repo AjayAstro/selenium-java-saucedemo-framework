@@ -11,6 +11,29 @@
 
     <name>Selenium Java SauceDemo Framework</name>
     <description>Production-quality Selenium WebDriver test automation framework for SauceDemo</description>
+    <url>https://github.com/AjayAstro/selenium-java-saucedemo-framework</url>
+    <inceptionYear>2026</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Ajay</name>
+            <url>https://github.com/AjayAstro</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/AjayAstro/selenium-java-saucedemo-framework.git</connection>
+        <developerConnection>scm:git:git@github.com:AjayAstro/selenium-java-saucedemo-framework.git</developerConnection>
+        <url>https://github.com/AjayAstro/selenium-java-saucedemo-framework</url>
+    </scm>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>

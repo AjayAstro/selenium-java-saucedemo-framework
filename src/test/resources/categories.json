@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Ignored / skipped tests",
+    "matchedStatuses": ["skipped"]
+  },
+  {
+    "name": "Element not found (locator issues)",
+    "matchedStatuses": ["broken", "failed"],
+    "messageRegex": ".*NoSuchElementException.*"
+  },
+  {
+    "name": "Synchronisation / timeout",
+    "matchedStatuses": ["broken", "failed"],
+    "messageRegex": ".*TimeoutException.*"
+  },
+  {
+    "name": "Stale element",
+    "matchedStatuses": ["broken", "failed"],
+    "messageRegex": ".*StaleElementReferenceException.*"
+  },
+  {
+    "name": "Assertion failures (product defects)",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*(AssertionError|expected).*"
+  },
+  {
+    "name": "Infrastructure / driver issues",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*(SessionNotCreated|WebDriverException).*"
+  }
+]
